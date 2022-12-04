@@ -12,6 +12,9 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 
 
 
@@ -29,7 +32,7 @@ const darkTheme = createTheme({
 fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies").then((data)=>data.json()).then((movies)=>console.log(movies))
   return (
     <ThemeProvider theme={darkTheme}>
- 
+ <Paper style={{minHeight: "100vh", borderRadius:"0%"}} elevation={4} >
     <div className='App'>
        <AppBar position="static">
         <Toolbar>
@@ -37,7 +40,12 @@ fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies").then((data)=>data.js
           <Button color="inherit" onClick={()=>navigate("/movies")}>Movies</Button>
           <Button color="inherit" onClick={()=>navigate("/color-games")}>Color-games</Button>
           <Button color="inherit" onClick={()=>navigate("/movies/addmovie")}>Add-Movies</Button>
-          <Button  color="inherit" onClick={()=>setMode(mode ==="light"? "dark":"light")}>dark mode</Button>
+          <Button  
+          startIcon={mode==="light"?  <Brightness7Icon /> : <Brightness4Icon />}
+          color="inherit"
+           onClick={()=>setMode(mode ==="light"? "dark":"light")}>
+            {(mode ==="light"? "dark":"light")} mode
+            </Button>
         </Toolbar>
       </AppBar>
       <Routes>
@@ -52,6 +60,7 @@ fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies").then((data)=>data.js
       </Routes>
 
     </div>
+    </Paper >
     </ThemeProvider>
   );
 }
