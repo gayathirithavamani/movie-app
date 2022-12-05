@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Movielist from './Movielist';
-import { Routes, Route,  Navigate, useParams, useNavigate } from "react-router-dom";
+import { Routes, Route,  Navigate, useNavigate } from "react-router-dom";
 import Addcolor from './Addcolor';
 import { Movie } from './Movie';
 import Addmovie from './components/Addmovie';
@@ -10,11 +10,12 @@ import { INITIAL_MOVIE_LIST } from './INITIAL_MOVIE_LIST';
 import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
+import { NotFound } from './NotFound';
+import { MovieDetail } from './MovieDetail';
 
 
 
@@ -29,7 +30,9 @@ const darkTheme = createTheme({
     mode: mode,
   },
 });
-fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies").then((data)=>data.json()).then((movies)=>console.log(movies))
+fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies")
+.then((data)=>data.json())
+.then((movies)=>console.log(movies));
   return (
     <ThemeProvider theme={darkTheme}>
  <Paper style={{minHeight: "100vh", borderRadius:"0%"}} elevation={4} >
@@ -64,57 +67,6 @@ fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies").then((data)=>data.js
     </ThemeProvider>
   );
 }
-
-function MovieDetail({movielist}, styles) {
-  const { id } = useParams();
-  const movie=movielist[id];
-  console.log(movielist, movie);
-
-const Navigate=useNavigate();
-  return (
-    <div>
-       <iframe width="100%" 
-      height="800px"
-       src={movie.trailer}
-        title="Avatar: The Way of Water | New Trailer" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-         allowfullscreen>
-
-         </iframe> 
-         <div className='movie-detail-container'>
-          <div className="movie-specs">
-                <h2 className="movie-name">{movie.name}
-                    
-                </h2>
-                <p style={styles} className="movie-rating">🦚{movie.rating}</p>
-              
-            </div>
-      <p className="movie-summary">{movie.summary}</p> 
-      </div>
-      <Button 
-      startIcon={<ArrowBackIcon />}
-      onClick={()=>Navigate(-1)} 
-      variant="contained">Back</Button>
-      {/* <button onClick={()=>Navigate(-1)}> Back</button> */}
-       {/* <h1>movie details page {movie.name}......😊😊😊😊😊😊😊😊😊😊😊</h1> */}
-    </div>
-  );
-}
-
-
-
-function NotFound() {
-  return (
-    <div>
-      <h1>404 not found </h1>
-      <img src="https://cdn.dribbble.com/users/1488185/screenshots/4405994/777_still_2x.gif?compress=1&resize=320x240&vertical=top"
-        alt="404 not found" />
-    </div>
-  );
-}
-
-
 
 function Home() {
   return (
