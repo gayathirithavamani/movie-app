@@ -6,6 +6,7 @@ function Addmovie({movielist, setmovielist}) {
     const [poster, setposter] = useState("");
     const [rating, setrating] = useState("");
     const [summary, setsummary] = useState("");
+    
   return (
     <div>
           <div className='add-movie-form'>

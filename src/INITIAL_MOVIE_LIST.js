@@ -1,5 +1,4 @@
-// import { Colorbox } from './Colorbox';
-// import { AssignmentReturned } from '@mui/icons-material';
+
 export const INITIAL_MOVIE_LIST = [
   {
     id: "100",
