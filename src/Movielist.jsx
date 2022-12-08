@@ -5,6 +5,7 @@ import { Movie } from './Movie';
 import IconButton from '@mui/material/IconButton';
 
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 // container and presentation
 function Movielist(){
@@ -41,10 +42,17 @@ function Movielist(){
                             style={{ marginLeft:"auto"}}
                             onClick={()=>deleteMovie(mv.id)} aria-label="delete" color="error">
                             <DeleteIcon />
+                          </IconButton>}
+                          editbutton={
+                            <IconButton
+                            style={{ marginLeft:"auto"}}
+                            onClick={()=>deleteMovie(mv.id)} aria-label="edit" color="secondary">
+                            <EditIcon  />
                           </IconButton>
                         // <button onClick={()=>deleteMovie(mv.id)} >Delete me</button>
                         
-                        } />
+                        }
+                        />
                     </div>
                 ))}
             </div>
