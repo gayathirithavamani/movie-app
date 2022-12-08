@@ -1,6 +1,6 @@
 import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 function Addmovie({movielist, setmovielist}) {
     const [name, setname] = useState("");
