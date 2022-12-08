@@ -51,6 +51,7 @@ export function BasicForm() {
       <h1>touvhed</h1>
       <pre>{JSON.stringify(formik.touched)}</pre>
       <button type="submit">submit</button>
+      <button type="submit">submit</button>
     </form>
   );
 }
