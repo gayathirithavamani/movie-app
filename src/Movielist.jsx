@@ -2,6 +2,9 @@ import React, { useEffect, useState }  from 'react';
 
 
 import { Movie } from './Movie';
+import IconButton from '@mui/material/IconButton';
+
+import DeleteIcon from '@mui/icons-material/Delete';
 
 // container and presentation
 function Movielist(){
@@ -33,7 +36,15 @@ function Movielist(){
                     <div key={mv.id}>
                         <Movie movie={mv} id={mv.id}
                         // renderprops
-                        deletebutton={<button onClick={()=>deleteMovie(mv.id)} >Delete me</button>} />
+                        deletebutton={
+                            <IconButton
+                            style={{ marginLeft:"auto"}}
+                            onClick={()=>deleteMovie(mv.id)} aria-label="delete" color="error">
+                            <DeleteIcon />
+                          </IconButton>
+                        // <button onClick={()=>deleteMovie(mv.id)} >Delete me</button>
+                        
+                        } />
                     </div>
                 ))}
             </div>

@@ -15,12 +15,14 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import { NotFound } from "./NotFound";
 import { MovieDetail } from "./MovieDetail";
+import { BasicForm } from "./BasicForm";
+// import { BasicForm } from "./BasicForm";
 
 function App() {
   const [movielist, setmovielist] = useState([]);
   const navigate = useNavigate();
 
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("dark");
   const darkTheme = createTheme({
     palette: {
       mode: mode,
@@ -54,6 +56,7 @@ function App() {
                 Add-Movies
               </Button>
               <Button
+                style={{ marginLeft: "auto" }}
                 startIcon={
                   mode === "light" ? <Brightness7Icon /> : <Brightness4Icon />
                 }
@@ -70,12 +73,8 @@ function App() {
             <Route path="/movies" element={<Movielist />} />
             <Route path="/add-movies" element={<Movie />} />
             <Route path="/color-games" element={<Addcolor />} />
-            <Route
-              path="/movies/addmovie"
-              element={
-                <Addmovie movielist={movielist} setmovielist={setmovielist} />
-              }
-            />
+            <Route path="/basic-form" element={<BasicForm />} />
+            <Route path="/movies/addmovie" element={<Addmovie />} />
             <Route
               path="/movies/:id"
               element={<MovieDetail movielist={movielist} />}

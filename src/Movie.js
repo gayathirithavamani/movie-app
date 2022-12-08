@@ -40,7 +40,7 @@ export function Movie({ movie, id, deletebutton }) {
             {id}
           </h2>
           <p style={styles} className="movie-rating">
-            🦚{movie.rating}
+            ⭐{movie.rating}
           </p>
         </div>
 
