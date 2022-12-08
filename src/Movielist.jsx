@@ -43,14 +43,14 @@ function Movielist(){
                             onClick={()=>deleteMovie(mv.id)} aria-label="delete" color="error">
                             <DeleteIcon />
                           </IconButton>}
+                           
                           editbutton={
                             <IconButton
                             style={{ marginLeft:"auto"}}
                             onClick={()=>deleteMovie(mv.id)} aria-label="edit" color="secondary">
                             <EditIcon  />
                           </IconButton>
-                        // <button onClick={()=>deleteMovie(mv.id)} >Delete me</button>
-                        
+                       
                         }
                         />
                     </div>

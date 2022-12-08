@@ -45,3 +45,7 @@
   max-width:650px;
   padding:16px
 }
+.add-movie-form{
+  display: flex;
+  flex-direction: column;
+}
