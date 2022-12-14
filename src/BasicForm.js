@@ -5,53 +5,55 @@ const formvalidationSchema = yup.object({
   email: yup
     .string()
     .min(8, "need a bigger email😒")
-    .required("need cooler email is needed"),
+    .required("need cooler email is needed😁")
+    .matches(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i
+    ),
   password: yup
     .string()
-    .min(4, "need bigger password")
-    .required("need cooler password is needed"),
+    .min(4, "need bigger password👍")
+    .required("need cooler password is needed😘"),
 });
 
 export function BasicForm() {
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema: formvalidationSchema,
-    onSubmit: (values) => {
-      console.log("form values:", values);
-    },
-  });
+  const { handleSubmit, values, handleChange, handleBlur, touched, errors } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+      },
+      validationSchema: formvalidationSchema,
+      onSubmit: (values) => {
+        console.log("form values:", values);
+      },
+    });
   return (
-    <form className="add-movie-form" onSubmit={formik.handleSubmit}>
+    <form className="add-movie-form" onSubmit={handleSubmit}>
       <input
-        value={formik.values.email}
+        value={values.email}
         type="email"
         placeholder="email"
         name="email"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
-      {formik.touched.email && formik.errors.email ? formik.errors.email : null}
+      {touched.email && errors.email ? errors.email : null}
       <input
-        value={formik.values.password}
+        value={values.password}
         type="text"
         placeholder="password"
         name="password"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
-      {formik.touched.email && formik.password.email
-        ? formik.errors.password
-        : null}
+      {touched.password && errors.password ? errors.password : null}
 
-      <h1>errors</h1>
+      {/* <h1>errors</h1>
       <pre>{JSON.stringify(formik.errors)}</pre>
       <h1>touvhed</h1>
-      <pre>{JSON.stringify(formik.touched)}</pre>
-      <button type="submit">submit</button>
-      <button type="submit">submit</button>
+      <pre>{JSON.stringify(formik.touched)}</pre> */}
+
+      <button type="submit">Submit</button>
     </form>
   );
 }
