@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Movielist from "./Movielist";
+import MovieList from "./Movielist";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Addcolor from "./Addcolor";
+import AddColor from "./Addcolor";
 import { Movie } from "./Movie";
-import Addmovie from "./components/Addmovie";
+import { AddMovie } from "./components/Addmovie";
 // import { INITIAL_MOVIE_LIST } from "./INITIAL_MOVIE_LIST";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
@@ -19,7 +19,7 @@ import { BasicForm } from "./BasicForm";
 // import { BasicForm } from "./BasicForm";
 
 function App() {
-  const [movielist, setmovielist] = useState([]);
+  const [movielist, setMovieList] = useState([]);
   const navigate = useNavigate();
 
   const [mode, setMode] = useState("dark");
@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies")
       .then((data) => data.json())
-      .then((movies) => setmovielist(movies));
+      .then((movies) => setMovieList(movies));
   }, []);
 
   return (
@@ -70,11 +70,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/films" element={<Navigate replace to="/movies" />} />
-            <Route path="/movies" element={<Movielist />} />
+            <Route path="/movies" element={<MovieList />} />
             <Route path="/add-movies" element={<Movie />} />
-            <Route path="/color-games" element={<Addcolor />} />
+            <Route path="/color-games" element={<AddColor />} />
             <Route path="/basic-form" element={<BasicForm />} />
-            <Route path="/movies/addmovie" element={<Addmovie />} />
+            <Route path="/movies/addmovie" element={<AddMovie />} />
             <Route
               path="/movies/:id"
               element={<MovieDetail movielist={movielist} />}
