@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-const formvalidationSchema = yup.object({
+const formValidationSchema = yup.object({
   email: yup
     .string()
     .min(8, "need a bigger email😒")
@@ -22,7 +22,7 @@ export function BasicForm() {
         email: "",
         password: "",
       },
-      validationSchema: formvalidationSchema,
+      validationSchema: formValidationSchema,
       onSubmit: (values) => {
         console.log("form values:", values);
       },

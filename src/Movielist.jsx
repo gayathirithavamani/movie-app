@@ -5,10 +5,11 @@ import IconButton from "@mui/material/IconButton";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { useNavigate } from "react-router-dom";
 
 // container and presentation
 function MovieList() {
-  const [movielist, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState([]);
 
   const getMovie = () => {
     fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies")
@@ -26,18 +27,21 @@ function MovieList() {
     }).then((data) => getMovie());
     // console.log("deleting movie", id);
   };
+
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="movie-list">
-        {movielist.map((mv) => (
+        {movieList.map((mv) => (
           <div key={mv.id}>
             <Movie
               movie={mv}
               id={mv.id}
               // renderprops
-              deletebutton={
+              deleteButton={
                 <IconButton
-                  style={{ marginLeft: "auto" }}
+                  sx={{ marginLeft: "auto" }}
                   onClick={() => deleteMovie(mv.id)}
                   aria-label="delete"
                   color="error"
@@ -45,11 +49,11 @@ function MovieList() {
                   <DeleteIcon />
                 </IconButton>
               }
-              editbutton={
+              editButton={
                 <IconButton
-                  style={{ marginLeft: "auto" }}
-                  onClick={() => deleteMovie(mv.id)}
-                  aria-label="edit"
+                  sx={{ marginLeft: "auto" }}
+                  onClick={() => navigate(`/movies/edit/${mv.id}`)}
+                  aria-label="delete"
                   color="secondary"
                 >
                   <EditIcon />

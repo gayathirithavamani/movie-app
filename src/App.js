@@ -16,10 +16,11 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import { NotFound } from "./NotFound";
 import { MovieDetail } from "./MovieDetail";
 import { BasicForm } from "./BasicForm";
+import { EditMovie } from "./EditMovie";
 // import { BasicForm } from "./BasicForm";
 
 function App() {
-  const [movielist, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState([]);
   const navigate = useNavigate();
 
   const [mode, setMode] = useState("dark");
@@ -74,11 +75,14 @@ function App() {
             <Route path="/add-movies" element={<Movie />} />
             <Route path="/color-games" element={<AddColor />} />
             <Route path="/basic-form" element={<BasicForm />} />
-            <Route path="/movies/addmovie" element={<AddMovie />} />
             <Route
-              path="/movies/:id"
-              element={<MovieDetail movielist={movielist} />}
+              path="/movies/add"
+              element={
+                <AddMovie movieList={movieList} setMovieList={setMovieList} />
+              }
             />
+            <Route path="/movies/:id" element={<MovieDetail />} />
+            <Route path="/movies/edit/:id" element={<EditMovie />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
