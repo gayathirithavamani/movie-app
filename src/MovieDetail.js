@@ -6,12 +6,12 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 export function MovieDetail(styles) {
   const { id } = useParams();
   // const movie = movielist[id];
-  const [movie, setmovie] = useState([]);
+  const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     fetch(`https://63899fdf4eccb986e895a997.mockapi.io/movies/${id}`)
       .then((data) => data.json())
-      .then((mv) => setmovie(mv));
+      .then((mv) => setMovie(mv));
   }, []);
 
   console.log(movie);

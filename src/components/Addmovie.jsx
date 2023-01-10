@@ -5,25 +5,11 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 const movieValidationSchema = yup.object({
-  name: yup.string().required("a cool name is need😍"),
-  poster: yup
-    .string()
-    .required("a cool poster is need😍")
-    .min(4, "need a bigger poster👍"),
-  rating: yup
-    .number()
-    .required("a cool rating is need😍")
-    .min(0, "need a bigger rating👍")
-    .max(10),
-  summary: yup
-    .string()
-    .required("a cool summary is need😍")
-    .min(20, "need a bigger summary👍"),
-  trailer: yup
-    .string()
-    .required("a cool trailer is need😍")
-    .min(4, "need a bigger trailer👍")
-    .url(),
+  name: yup.string(),
+  poster: yup.string().min(4),
+  rating: yup.number().min(0).max(10),
+  summary: yup.string().min(20),
+  trailer: yup.string().min(4).url(),
 });
 
 export function AddMovie() {

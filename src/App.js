@@ -76,12 +76,15 @@ function App() {
             <Route path="/color-games" element={<AddColor />} />
             <Route path="/basic-form" element={<BasicForm />} />
             <Route
-              path="/movies/add"
+              path="/movies/addmovie"
               element={
                 <AddMovie movieList={movieList} setMovieList={setMovieList} />
               }
             />
-            <Route path="/movies/:id" element={<MovieDetail />} />
+            <Route
+              path="/movies/:id"
+              element={<MovieDetail movieList={movieList} />}
+            />
             <Route path="/movies/edit/:id" element={<EditMovie />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
