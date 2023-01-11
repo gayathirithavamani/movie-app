@@ -17,6 +17,7 @@ import { NotFound } from "./NotFound";
 import { MovieDetail } from "./MovieDetail";
 import { BasicForm } from "./BasicForm";
 import { EditMovie } from "./EditMovie";
+import { API } from "./global";
 // import { BasicForm } from "./BasicForm";
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
     },
   });
   useEffect(() => {
-    fetch("https://63899fdf4eccb986e895a997.mockapi.io/movies")
+    fetch(`${API}/movies`)
       .then((data) => data.json())
       .then((movies) => setMovieList(movies));
   }, []);
