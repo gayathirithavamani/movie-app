@@ -32,15 +32,15 @@ function MovieList() {
     <div>
       <div className="movie-list">
         {movieList.map((mv) => (
-          <div key={mv.id}>
+          <div key={mv._id}>
             <Movie
               movie={mv}
-              id={mv.id}
+              id={mv._id}
               // renderprops
               deleteButton={
                 <IconButton
                   sx={{ marginLeft: "auto" }}
-                  onClick={() => deleteMovie(mv.id)}
+                  onClick={() => deleteMovie(mv._id)}
                   aria-label="delete"
                   color="error"
                 >
@@ -50,7 +50,7 @@ function MovieList() {
               editButton={
                 <IconButton
                   sx={{ marginLeft: "auto" }}
-                  onClick={() => navigate(`/movies/edit/${mv.id}`)}
+                  onClick={() => navigate(`/movies/edit/${mv._id}`)}
                   aria-label="delete"
                   color="secondary"
                 >
